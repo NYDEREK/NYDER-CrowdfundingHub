@@ -1905,3 +1905,208 @@ img {
     border-radius: 16px;
   }
 }
+
+/* Fast download pages */
+
+.download-landing {
+  min-height: 100vh;
+  background: #090a09;
+}
+
+.download-landing-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(410px, 0.58fr);
+  min-height: calc(100svh - 68px);
+}
+
+.download-landing-image {
+  min-height: calc(100svh - 68px);
+  overflow: hidden;
+  background: #1a1a19;
+}
+
+.download-landing-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.download-landing-airlab .download-landing-image img {
+  filter: brightness(0.76) contrast(1.04);
+}
+
+.download-landing-framelab .download-landing-image img {
+  filter: brightness(0.72) saturate(0.88);
+}
+
+.download-landing-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 42px;
+  padding: clamp(30px, 4vw, 58px);
+  border-left: 1px solid var(--line);
+  background: #0d0e0d;
+}
+
+.download-landing-breadcrumb {
+  display: flex;
+  gap: 9px;
+  margin-bottom: clamp(55px, 8vh, 105px);
+  color: #656565;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.download-landing-breadcrumb a:hover,
+.download-landing-breadcrumb a:focus-visible {
+  color: white;
+}
+
+.download-landing-panel h1 {
+  margin: 20px 0 20px;
+  font-size: clamp(4rem, 7vw, 7.2rem);
+  font-weight: 530;
+  letter-spacing: -0.08em;
+  line-height: 0.82;
+}
+
+.download-prompt {
+  max-width: 390px;
+  margin: 0;
+  color: #878787;
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.download-primary-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.download-primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 94px;
+  padding: 18px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 19px;
+  background: #42df70;
+  color: #061009;
+  box-shadow: 0 14px 40px rgba(66, 223, 112, 0.13);
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.download-primary-button:hover,
+.download-primary-button:focus-visible {
+  transform: translateY(-3px);
+  background: #58ed83;
+  box-shadow: 0 18px 48px rgba(66, 223, 112, 0.23);
+}
+
+.download-primary-button > span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.download-primary-button small {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.59rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.download-primary-button strong {
+  font-size: 1rem;
+  font-weight: 680;
+  letter-spacing: -0.025em;
+}
+
+.download-primary-button b {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.download-landing-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: #626262;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.download-landing-footer a:hover,
+.download-landing-footer a:focus-visible {
+  color: white;
+}
+
+@media (max-width: 980px) {
+  .download-landing-main {
+    grid-template-columns: 1fr;
+  }
+
+  .download-landing-image {
+    min-height: 48svh;
+    max-height: 620px;
+  }
+
+  .download-landing-panel {
+    min-height: 610px;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .download-landing-breadcrumb {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 560px) {
+  .download-landing-image {
+    min-height: 36svh;
+  }
+
+  .download-landing-panel {
+    min-height: calc(64svh - 62px);
+    gap: 34px;
+    padding: 26px 16px 22px;
+  }
+
+  .download-landing-breadcrumb {
+    margin-bottom: 40px;
+  }
+
+  .download-landing-panel h1 {
+    font-size: clamp(3.8rem, 21vw, 5.8rem);
+  }
+
+  .download-primary-button {
+    min-height: 82px;
+    padding: 15px 17px;
+    border-radius: 16px;
+  }
+
+  .download-landing-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

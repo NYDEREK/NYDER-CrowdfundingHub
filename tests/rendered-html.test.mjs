@@ -53,14 +53,17 @@ test("renders dedicated AirLab and Frame Lab pages", async () => {
     airLabResponse.text(),
     frameLabResponse.text(),
   ]);
-  assert.match(airLabHtml, /Design\. Print\. Use it\./);
+  assert.match(airLabHtml, /Choose your system and download the app/);
   assert.match(airLabHtml, /assets\/airlab\/airlab-wide\.png/);
   assert.match(airLabHtml, /downloads\/airlab\/AirLab_0\.1\.0_aarch64\.dmg/);
+  assert.match(airLabHtml, /downloads\/airlab\/AirLab_0\.1\.0_x64-setup\.exe/);
   assert.match(airLabHtml, /Download for Windows/);
   assert.match(frameLabHtml, /Custom sunglasses generator/);
   assert.match(frameLabHtml, /assets\/framelab\/frame-lab-banner\.png/);
   assert.match(frameLabHtml, /Download for macOS/);
-  assert.match(frameLabHtml, /Build coming soon/);
+  assert.match(frameLabHtml, /downloads\/framelab\/FrameLab_0\.1\.0_aarch64\.dmg/);
+  assert.match(frameLabHtml, /downloads\/framelab\/FrameLab_0\.1\.0_x64-setup\.exe/);
+  assert.doesNotMatch(airLabHtml + frameLabHtml, /coming soon/i);
 });
 
 test("keeps the finished site free of starter preview code", async () => {
