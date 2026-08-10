@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NYDER — Tools for Makers",
-  description: "A home for independent desktop tools made for design and 3D printing.",
+  title: "NYDER — App Downloads",
+  description: "Download NYDER crowdfunding apps for macOS and Windows.",
 };
 
 export default function RootLayout({

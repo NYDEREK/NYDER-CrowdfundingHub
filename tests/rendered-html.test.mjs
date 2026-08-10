@@ -4,77 +4,46 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-async function render(pathname = "/") {
+async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
+  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request(`http://localhost${pathname}`, {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
   );
 }
 
-test("server-renders a neutral two-app product hub", async () => {
+test("renders the simple app download library", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>NYDER — Tools for Makers<\/title>/i);
-  assert.match(html, /Tools for ideas/);
-  assert.match(html, /Choose your lab/);
+  assert.match(html, /<title>NYDER — App Downloads<\/title>/i);
+  assert.match(html, /Download your app/);
   assert.match(html, /AirLab/);
   assert.match(html, /Frame Lab/);
-  assert.match(html, /href="\/apps\/airlab"/);
-  assert.match(html, /href="\/apps\/framelab"/);
-  assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
+  assert.match(html, /Download for macOS/);
+  assert.match(html, /Download for Windows/);
+  assert.match(html, /downloads\/airlab\/AirLab_0\.1\.0_aarch64\.dmg/);
+  assert.match(html, /downloads\/framelab\/FrameLab_0\.1\.0_x64-setup\.exe/);
+  assert.doesNotMatch(html, /coming soon|how it works|inside airlab/i);
 });
 
-test("renders dedicated AirLab and Frame Lab pages", async () => {
-  const [airLabResponse, frameLabResponse] = await Promise.all([
-    render("/apps/airlab"),
-    render("/apps/framelab"),
-  ]);
-  assert.equal(airLabResponse.status, 200);
-  assert.equal(frameLabResponse.status, 200);
-
-  const [airLabHtml, frameLabHtml] = await Promise.all([
-    airLabResponse.text(),
-    frameLabResponse.text(),
-  ]);
-  assert.match(airLabHtml, /Choose your system and download the app/);
-  assert.match(airLabHtml, /assets\/airlab\/airlab-wide\.png/);
-  assert.match(airLabHtml, /downloads\/airlab\/AirLab_0\.1\.0_aarch64\.dmg/);
-  assert.match(airLabHtml, /downloads\/airlab\/AirLab_0\.1\.0_x64-setup\.exe/);
-  assert.match(airLabHtml, /Download for Windows/);
-  assert.match(frameLabHtml, /Custom sunglasses generator/);
-  assert.match(frameLabHtml, /assets\/framelab\/frame-lab-banner\.png/);
-  assert.match(frameLabHtml, /Download for macOS/);
-  assert.match(frameLabHtml, /downloads\/framelab\/FrameLab_0\.1\.0_aarch64\.dmg/);
-  assert.match(frameLabHtml, /downloads\/framelab\/FrameLab_0\.1\.0_x64-setup\.exe/);
-  assert.doesNotMatch(airLabHtml + frameLabHtml, /coming soon/i);
-});
-
-test("keeps the finished site free of starter preview code", async () => {
-  const [page, layout, packageJson] = await Promise.all([
+test("stores the app catalog in one copyable data list", async () => {
+  const [page, appData, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/apps.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /Choose your lab/);
-  assert.match(layout, /NYDER — Tools for Makers/);
+  assert.match(page, /apps\.map/);
+  assert.match(appData, /copy one object/i);
+  assert.match(layout, /NYDER — App Downloads/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await assert.rejects(access(new URL("app\/_sites-preview", root)));
 });
