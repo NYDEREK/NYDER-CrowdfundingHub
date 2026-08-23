@@ -16,8 +16,9 @@ export const apps: DownloadApp[] = [
     description: "Create custom airless balls and export models ready for 3D printing.",
     image: "/assets/airlab/airlab-wide.png",
     imageAlt: "Colorful airless balls created with AirLab",
-    macDownload: "/downloads/airlab/AirLab_0.1.0_aarch64.dmg",
-    windowsDownload: "/downloads/airlab/AirLab_0.1.0_x64-setup.exe",
+    macDownload: "/downloads/airlab/AirLab_0.1.0_aarch64.dmg?v=20260823",
+    windowsDownload:
+      "/downloads/airlab/AirLab_0.1.0_x64-setup.exe?v=20260823",
   },
   {
     id: "framelab",
