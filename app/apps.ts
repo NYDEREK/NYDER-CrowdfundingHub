@@ -6,6 +6,7 @@ export type DownloadApp = {
   imageAlt: string;
   macDownload: string;
   windowsDownload: string;
+  requiresActivation?: boolean;
 };
 
 // To add another crowdfunding app, copy one object and replace its details.
@@ -26,7 +27,10 @@ export const apps: DownloadApp[] = [
     description: "Design custom 3D-printed sunglasses and export your own frame.",
     image: "/assets/framelab/frame-lab-banner.png",
     imageAlt: "Custom sunglasses designed with Frame Lab",
-    macDownload: "/downloads/framelab/FrameLab_0.1.0_aarch64.dmg",
-    windowsDownload: "/downloads/framelab/FrameLab_0.1.0_x64-setup.exe",
+    macDownload:
+      "https://github.com/NYDEREK/Frame-Lab-app/releases/download/v0.3.9/Frame-Lab-0.3.9-mac-universal.dmg",
+    windowsDownload:
+      "https://github.com/NYDEREK/Frame-Lab-app/releases/download/v0.3.9/Frame-Lab-0.3.9-win-x64.exe",
+    requiresActivation: true,
   },
 ];

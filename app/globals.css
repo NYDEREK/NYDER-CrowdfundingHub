@@ -183,6 +183,21 @@ img {
   line-height: 1.55;
 }
 
+.activation-note {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin-top: 18px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: #b7bbb5;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
 .simple-download-buttons {
   display: flex;
   flex-direction: column;

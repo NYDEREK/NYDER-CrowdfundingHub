@@ -30,14 +30,17 @@ export default function Home() {
                 <div>
                   <h2>{app.name}</h2>
                   <p>{app.description}</p>
+                  {app.requiresActivation ? (
+                    <span className="activation-note">Activation code required</span>
+                  ) : null}
                 </div>
 
                 <div className="simple-download-buttons" aria-label={`${app.name} downloads`}>
-                  <a href={app.macDownload} download>
+                  <a href={app.macDownload} download rel="noreferrer">
                     <span><small>Apple</small><strong>Download for macOS</strong></span>
                     <b aria-hidden="true">↓</b>
                   </a>
-                  <a href={app.windowsDownload} download>
+                  <a href={app.windowsDownload} download rel="noreferrer">
                     <span><small>Microsoft</small><strong>Download for Windows</strong></span>
                     <b aria-hidden="true">↓</b>
                   </a>
