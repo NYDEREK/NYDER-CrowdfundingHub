@@ -28,9 +28,9 @@ export const apps: DownloadApp[] = [
     image: "/assets/framelab/frame-lab-banner.png",
     imageAlt: "Custom sunglasses designed with Frame Lab",
     macDownload:
-      "https://github.com/NYDEREK/Frame-Lab-app/releases/download/v0.3.9/Frame-Lab-0.3.9-mac-universal.dmg",
+      "https://github.com/NYDEREK/Frame-Lab-app/releases/download/v0.3.10/Frame-Lab-0.3.10-mac-universal.dmg",
     windowsDownload:
-      "https://github.com/NYDEREK/Frame-Lab-app/releases/download/v0.3.9/Frame-Lab-0.3.9-win-x64.exe",
+      "https://github.com/NYDEREK/Frame-Lab-app/releases/download/v0.3.10/Frame-Lab-0.3.10-win-x64.exe",
     requiresActivation: true,
   },
 ];
