@@ -29,8 +29,8 @@ test("renders the simple app download library", async () => {
   assert.match(html, /Download for macOS/);
   assert.match(html, /Download for Windows/);
   assert.match(html, /downloads\/airlab\/AirLab_0\.1\.0_aarch64\.dmg/);
-  assert.match(html, /Frame-Lab-app\/releases\/download\/v0\.3\.9\/Frame-Lab-0\.3\.9-mac-universal\.dmg/);
-  assert.match(html, /Frame-Lab-app\/releases\/download\/v0\.3\.9\/Frame-Lab-0\.3\.9-win-x64\.exe/);
+  assert.match(html, /Frame-Lab-app\/releases\/download\/v0\.3\.10\/Frame-Lab-0\.3\.10-mac-universal\.dmg/);
+  assert.match(html, /Frame-Lab-app\/releases\/download\/v0\.3\.10\/Frame-Lab-0\.3\.10-win-x64\.exe/);
   assert.match(html, /Activation code required/);
   assert.doesNotMatch(html, /\b\d{4}-\d{4}-\d{4}\b/, "Activation codes must never be exposed on the download site.");
   assert.doesNotMatch(html, /coming soon|how it works|inside airlab/i);
