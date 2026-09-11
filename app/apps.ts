@@ -30,7 +30,7 @@ export const apps: DownloadApp[] = [
     macDownload:
       "https://github.com/NYDEREK/Frame-Lab-app/releases/download/v0.3.11/Frame-Lab-0.3.11-mac-universal.dmg",
     windowsDownload:
-      "https://github.com/NYDEREK/Frame-Lab-app/releases/download/v0.3.11/Frame-Lab-0.3.11-win-x64.exe",
+      "https://github.com/NYDEREK/Frame-Lab-app/releases/download/v0.3.12/Frame-Lab-0.3.12-win-x64.exe",
     requiresActivation: true,
   },
 ];
